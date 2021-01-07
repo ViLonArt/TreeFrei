@@ -15,14 +15,13 @@ export default function App() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    url='http://192.168.1.100:3000/'+data;
+    url = 'http://88.198.201.77:3030/' + data;
     fetch(url)
-    .then((res) => res.json())
-    .then((res) => {
-        console.log(JSON.stringify(res.data[0].product_name))
-        alert('Nom du produit: '+res.data[0].product_name);
+      .then((res) => res.json())
+      .then((res) => {
+        alert('Nom du produit: '+res[0].product_name);
       })
-    .catch(() => {
+      .catch(() => {
         alert('Code barre non reconnu');
       })
   };
