@@ -19,11 +19,14 @@ export default ({ navigation, parentCallback }) => {
             .then((res) => res.json())
             .then((res) => {
                 global.product = res[0];
-                navigation.navigate('Products')
+                if(global.product) {
+                  navigation.navigate('Products')
+                } else {
+                  alert('Code barre non reconnu');
+                }
             })
             .catch((err) => {
-              console.log(err)
-              alert('Code barre non reconnu');
+              alert('Une erreur est survenue');
             })
         };
       
